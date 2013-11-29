@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebCustomerFollowUp.Models.Customer>
+
+@{
+    ViewBag.Title = "Müşteri Tanımlama";
+}
+
+<h2>Müsteri Tanımlama</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Adı
+        </th>
+        <th>
+            Adresi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Ayrıntılar", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

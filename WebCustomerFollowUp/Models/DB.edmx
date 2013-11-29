@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebCustomerFollowUpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="WebCustomerFollowUpModelStoreContainer">
+          <EntitySet Name="Beden" EntityType="WebCustomerFollowUpModel.Store.Beden" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="WebCustomerFollowUpModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Job" EntityType="WebCustomerFollowUpModel.Store.Job" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Phones" EntityType="WebCustomerFollowUpModel.Store.Phones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Renk" EntityType="WebCustomerFollowUpModel.Store.Renk" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Satis" EntityType="WebCustomerFollowUpModel.Store.Satis" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="stok" EntityType="WebCustomerFollowUpModel.Store.stok" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Urun" EntityType="WebCustomerFollowUpModel.Store.Urun" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Job_Customer" Association="WebCustomerFollowUpModel.Store.FK_Job_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phones_Customer" Association="WebCustomerFollowUpModel.Store.FK_Phones_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Phones" EntitySet="Phones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satis_Customer" Association="WebCustomerFollowUpModel.Store.FK_Satis_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Satis" EntitySet="Satis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satis_stok" Association="WebCustomerFollowUpModel.Store.FK_Satis_stok">
+            <End Role="stok" EntitySet="stok" />
+            <End Role="Satis" EntitySet="Satis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stok_Beden" Association="WebCustomerFollowUpModel.Store.FK_stok_Beden">
+            <End Role="Beden" EntitySet="Beden" />
+            <End Role="stok" EntitySet="stok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stok_Renk" Association="WebCustomerFollowUpModel.Store.FK_stok_Renk">
+            <End Role="Renk" EntitySet="Renk" />
+            <End Role="stok" EntitySet="stok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stok_Urun" Association="WebCustomerFollowUpModel.Store.FK_stok_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="stok" EntitySet="stok" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Beden">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="beden" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Website" Type="nvarchar" MaxLength="200" />
+          <Property Name="Job" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Phones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="13" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Renk">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="renk" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Satis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="musid" Type="int" />
+          <Property Name="stokid" Type="int" />
+          <Property Name="SatisTarihi" Type="smalldatetime" />
+          <Property Name="birimfiyat" Type="decimal" />
+          <Property Name="miktar" Type="int" />
+          <Property Name="toplam" Type="decimal" />
+          <Property Name="Alınan" Type="decimal" />
+          <Property Name="alacak" Type="decimal" />
+        </EntityType>
+        <EntityType Name="stok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StokAdi" Type="nvarchar" MaxLength="100" />
+          <Property Name="r_id" Type="int" />
+          <Property Name="b_id" Type="int" />
+          <Property Name="u_id" Type="int" />
+          <Property Name="adet" Type="int" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="urun" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Job_Customer">
+          <End Role="Customer" Type="WebCustomerFollowUpModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Job" Type="WebCustomerFollowUpModel.Store.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phones_Customer">
+          <End Role="Customer" Type="WebCustomerFollowUpModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Phones" Type="WebCustomerFollowUpModel.Store.Phones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Phones">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satis_Customer">
+          <End Role="Customer" Type="WebCustomerFollowUpModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Satis" Type="WebCustomerFollowUpModel.Store.Satis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Satis">
+              <PropertyRef Name="musid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satis_stok">
+          <End Role="stok" Type="WebCustomerFollowUpModel.Store.stok" Multiplicity="0..1" />
+          <End Role="Satis" Type="WebCustomerFollowUpModel.Store.Satis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stok">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Satis">
+              <PropertyRef Name="stokid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stok_Beden">
+          <End Role="Beden" Type="WebCustomerFollowUpModel.Store.Beden" Multiplicity="0..1" />
+          <End Role="stok" Type="WebCustomerFollowUpModel.Store.stok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beden">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stok">
+              <PropertyRef Name="b_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stok_Renk">
+          <End Role="Renk" Type="WebCustomerFollowUpModel.Store.Renk" Multiplicity="0..1" />
+          <End Role="stok" Type="WebCustomerFollowUpModel.Store.stok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renk">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stok">
+              <PropertyRef Name="r_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stok_Urun">
+          <End Role="Urun" Type="WebCustomerFollowUpModel.Store.Urun" Multiplicity="0..1" />
+          <End Role="stok" Type="WebCustomerFollowUpModel.Store.stok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stok">
+              <PropertyRef Name="u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebCustomerFollowUpModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WebCustomerFollowUpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="WebCustomerFollowUpModel.Customer" />
+          <EntitySet Name="Job" EntityType="WebCustomerFollowUpModel.Job" />
+          <EntitySet Name="Phones" EntityType="WebCustomerFollowUpModel.Phones" />
+          <AssociationSet Name="FK_Job_Customer" Association="WebCustomerFollowUpModel.FK_Job_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phones_Customer" Association="WebCustomerFollowUpModel.FK_Phones_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Phones" EntitySet="Phones" />
+          </AssociationSet>
+          <EntitySet Name="Beden" EntityType="WebCustomerFollowUpModel.Beden" />
+          <EntitySet Name="Renk" EntityType="WebCustomerFollowUpModel.Renk" />
+          <EntitySet Name="stok" EntityType="WebCustomerFollowUpModel.stok" />
+          <EntitySet Name="Urun" EntityType="WebCustomerFollowUpModel.Urun" />
+          <AssociationSet Name="FK_stok_Beden" Association="WebCustomerFollowUpModel.FK_stok_Beden">
+            <End Role="Beden" EntitySet="Beden" />
+            <End Role="stok" EntitySet="stok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stok_Renk" Association="WebCustomerFollowUpModel.FK_stok_Renk">
+            <End Role="Renk" EntitySet="Renk" />
+            <End Role="stok" EntitySet="stok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_stok_Urun" Association="WebCustomerFollowUpModel.FK_stok_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="stok" EntitySet="stok" />
+          </AssociationSet>
+          <EntitySet Name="Satis" EntityType="WebCustomerFollowUpModel.Satis" />
+          <AssociationSet Name="FK_Satis_Customer" Association="WebCustomerFollowUpModel.FK_Satis_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Satis" EntitySet="Satis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satis_stok" Association="WebCustomerFollowUpModel.FK_Satis_stok">
+            <End Role="stok" EntitySet="stok" />
+            <End Role="Satis" EntitySet="Satis" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Job" Relationship="WebCustomerFollowUpModel.FK_Job_Customer" FromRole="Customer" ToRole="Job" />
+          <NavigationProperty Name="Phones" Relationship="WebCustomerFollowUpModel.FK_Phones_Customer" FromRole="Customer" ToRole="Phones" />
+          <NavigationProperty Name="Satis" Relationship="WebCustomerFollowUpModel.FK_Satis_Customer" FromRole="Customer" ToRole="Satis" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Website" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Job1" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Customer" Relationship="WebCustomerFollowUpModel.FK_Job_Customer" FromRole="Job" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Phones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="WebCustomerFollowUpModel.FK_Phones_Customer" FromRole="Phones" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Job_Customer">
+          <End Role="Customer" Type="WebCustomerFollowUpModel.Customer" Multiplicity="0..1" />
+          <End Role="Job" Type="WebCustomerFollowUpModel.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phones_Customer">
+          <End Role="Customer" Type="WebCustomerFollowUpModel.Customer" Multiplicity="0..1" />
+          <End Role="Phones" Type="WebCustomerFollowUpModel.Phones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Phones">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Beden">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="beden1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stok" Relationship="WebCustomerFollowUpModel.FK_stok_Beden" FromRole="Beden" ToRole="stok" />
+        </EntityType>
+        <EntityType Name="Renk">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="renk1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stok" Relationship="WebCustomerFollowUpModel.FK_stok_Renk" FromRole="Renk" ToRole="stok" />
+        </EntityType>
+        <EntityType Name="stok">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="r_id" />
+          <Property Type="Int32" Name="b_id" />
+          <Property Type="Int32" Name="u_id" />
+          <Property Type="Int32" Name="adet" />
+          <NavigationProperty Name="Beden" Relationship="WebCustomerFollowUpModel.FK_stok_Beden" FromRole="stok" ToRole="Beden" />
+          <NavigationProperty Name="Renk" Relationship="WebCustomerFollowUpModel.FK_stok_Renk" FromRole="stok" ToRole="Renk" />
+          <NavigationProperty Name="Urun" Relationship="WebCustomerFollowUpModel.FK_stok_Urun" FromRole="stok" ToRole="Urun" />
+          <NavigationProperty Name="Satis" Relationship="WebCustomerFollowUpModel.FK_Satis_stok" FromRole="stok" ToRole="Satis" />
+          <Property Type="String" Name="StokAdi" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="urun1" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stok" Relationship="WebCustomerFollowUpModel.FK_stok_Urun" FromRole="Urun" ToRole="stok" />
+        </EntityType>
+        <Association Name="FK_stok_Beden">
+          <End Type="WebCustomerFollowUpModel.Beden" Role="Beden" Multiplicity="0..1" />
+          <End Type="WebCustomerFollowUpModel.stok" Role="stok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beden">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stok">
+              <PropertyRef Name="b_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stok_Renk">
+          <End Type="WebCustomerFollowUpModel.Renk" Role="Renk" Multiplicity="0..1" />
+          <End Type="WebCustomerFollowUpModel.stok" Role="stok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renk">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stok">
+              <PropertyRef Name="r_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_stok_Urun">
+          <End Type="WebCustomerFollowUpModel.Urun" Role="Urun" Multiplicity="0..1" />
+          <End Type="WebCustomerFollowUpModel.stok" Role="stok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stok">
+              <PropertyRef Name="u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Satis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="musid" />
+          <Property Type="Decimal" Name="birimfiyat" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="miktar" />
+          <NavigationProperty Name="Customer" Relationship="WebCustomerFollowUpModel.FK_Satis_Customer" FromRole="Satis" ToRole="Customer" />
+          <Property Type="Int32" Name="stokid" />
+          <NavigationProperty Name="stok" Relationship="WebCustomerFollowUpModel.FK_Satis_stok" FromRole="Satis" ToRole="stok" />
+          <Property Type="Decimal" Name="toplam" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Alınan" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="alacak" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="SatisTarihi" />
+        </EntityType>
+        <Association Name="FK_Satis_Customer">
+          <End Type="WebCustomerFollowUpModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="WebCustomerFollowUpModel.Satis" Role="Satis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Satis">
+              <PropertyRef Name="musid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satis_stok">
+          <End Type="WebCustomerFollowUpModel.stok" Role="stok" Multiplicity="0..1" />
+          <End Type="WebCustomerFollowUpModel.Satis" Role="Satis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stok">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Satis">
+              <PropertyRef Name="stokid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebCustomerFollowUpModelStoreContainer" CdmEntityContainer="WebCustomerFollowUpEntities">
+          <EntitySetMapping Name="Customer"><EntityTypeMapping TypeName="WebCustomerFollowUpModel.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Job"><EntityTypeMapping TypeName="WebCustomerFollowUpModel.Job"><MappingFragment StoreEntitySet="Job">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="Website" ColumnName="Website" />
+            <ScalarProperty Name="Job1" ColumnName="Job" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Phones"><EntityTypeMapping TypeName="WebCustomerFollowUpModel.Phones"><MappingFragment StoreEntitySet="Phones">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Beden">
+            <EntityTypeMapping TypeName="WebCustomerFollowUpModel.Beden">
+              <MappingFragment StoreEntitySet="Beden">
+                <ScalarProperty Name="beden1" ColumnName="beden" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Renk">
+            <EntityTypeMapping TypeName="WebCustomerFollowUpModel.Renk">
+              <MappingFragment StoreEntitySet="Renk">
+                <ScalarProperty Name="renk1" ColumnName="renk" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stok">
+            <EntityTypeMapping TypeName="WebCustomerFollowUpModel.stok">
+              <MappingFragment StoreEntitySet="stok">
+                <ScalarProperty Name="StokAdi" ColumnName="StokAdi" />
+                <ScalarProperty Name="adet" ColumnName="adet" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="b_id" ColumnName="b_id" />
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urun">
+            <EntityTypeMapping TypeName="WebCustomerFollowUpModel.Urun">
+              <MappingFragment StoreEntitySet="Urun">
+                <ScalarProperty Name="urun1" ColumnName="urun" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Satis">
+            <EntityTypeMapping TypeName="WebCustomerFollowUpModel.Satis">
+              <MappingFragment StoreEntitySet="Satis">
+                <ScalarProperty Name="SatisTarihi" ColumnName="SatisTarihi" />
+                <ScalarProperty Name="alacak" ColumnName="alacak" />
+                <ScalarProperty Name="Alınan" ColumnName="Alınan" />
+                <ScalarProperty Name="toplam" ColumnName="toplam" />
+                <ScalarProperty Name="stokid" ColumnName="stokid" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="birimfiyat" ColumnName="birimfiyat" />
+                <ScalarProperty Name="musid" ColumnName="musid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DB">
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Customer" Width="1.5" PointX="0.75" PointY="2.625" Height="1.9802864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Job" Width="1.5" PointX="3" PointY="1.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Phones" Width="1.5" PointX="3" PointY="4" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_Job_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.9612939453125" />
+          <ConnectorPoint PointX="3" PointY="2.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_Phones_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.3987939453125" />
+          <ConnectorPoint PointX="3" PointY="4.3987939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Beden" Width="1.5" PointX="5.375" PointY="1.375" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Renk" Width="1.5" PointX="5.375" PointY="4.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.stok" Width="1.5" PointX="7.625" PointY="1" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Urun" Width="1.5" PointX="5.375" PointY="6.875" Height="1.5956835937499996" />
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_stok_Beden" >
+          <ConnectorPoint PointX="6.875" PointY="2.172841796875" />
+          <ConnectorPoint PointX="7.625" PointY="2.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_stok_Renk" >
+          <ConnectorPoint PointX="6.875" PointY="5.422841796875" />
+          <ConnectorPoint PointX="7.9713510416666677" PointY="5.4228417968749989" />
+          <ConnectorPoint PointX="8.1380177083333347" PointY="5.422841796875" />
+          <ConnectorPoint PointX="8.54687375" PointY="5.422841796875" />
+          <ConnectorPoint PointX="8.54687375" PointY="3.7494921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_stok_Urun" >
+          <ConnectorPoint PointX="6.875" PointY="7.672841796875" />
+          <ConnectorPoint PointX="8.054684375" PointY="7.672841796875" />
+          <ConnectorPoint PointX="8.054684375" PointY="3.7494921875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="WebCustomerFollowUpModel.Satis" Width="1.5" PointX="0.75" PointY="7.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_Satis_Customer" >
+          <ConnectorPoint PointX="1.5" PointY="4.797587890625" />
+          <ConnectorPoint PointX="1.5" PointY="7.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="WebCustomerFollowUpModel.FK_Satis_stok" >
+          <ConnectorPoint PointX="8.8671893749999988" PointY="3.7494921875" />
+          <ConnectorPoint PointX="8.8671893749999988" PointY="9.3240364583333335" />
+          <ConnectorPoint PointX="2.25" PointY="9.3240364583333335" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

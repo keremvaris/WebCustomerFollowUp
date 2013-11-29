@@ -1,0 +1,20 @@
+﻿@model WebCustomerFollowUp.Models.Urun
+
+@{
+    ViewBag.Title = "Ayrıntılar";
+}
+
+<h2>Ayrıntılar</h2>
+
+<fieldset>
+    <legend>Ürün</legend>
+
+    <div class="display-label">Ürün</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.urun1)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</p>

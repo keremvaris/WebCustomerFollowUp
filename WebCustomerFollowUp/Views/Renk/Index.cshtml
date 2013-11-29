@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebCustomerFollowUp.Models.Renk>
+
+@{
+    ViewBag.Title = "Renk Tanımlama";
+}
+
+<h2>Renk Tanımlama</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Renk Listesi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.renk1)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Ayrıntılar", "Details", new { id=item.id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

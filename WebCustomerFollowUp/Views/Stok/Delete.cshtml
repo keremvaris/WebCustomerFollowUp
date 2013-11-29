@@ -1,0 +1,43 @@
+﻿@model WebCustomerFollowUp.Models.stok
+
+@{
+    ViewBag.Title = "Sil";
+}
+
+<h2>Sil</h2>
+
+<h3>Silmek istediğinize emin misiniz?</h3>
+<fieldset>
+    <legend>Stok</legend>
+
+    <div class="display-label">Renk</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Renk.renk1)
+    </div>
+
+    <div class="display-label">Beden</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Beden.beden1)
+    </div>
+
+    <div class="display-label">Ürün</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Urun.urun1)
+    </div>
+
+    <div class="display-label">Adet</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.adet)
+    </div>
+
+    <div class="display-label">Stok Adı</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StokAdi)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Sil" /> |
+        @Html.ActionLink("Listeye Geri Dön", "Index")
+    </p>
+}

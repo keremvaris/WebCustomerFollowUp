@@ -1,0 +1,23 @@
+﻿@model WebCustomerFollowUp.Models.Beden
+
+@{
+    ViewBag.Title = "Sil";
+}
+
+<h2>Beden Sil</h2>
+
+<h3>Silmek istediğinize emin misiniz?</h3>
+<fieldset>
+    <legend>Beden Sil</legend>
+
+    <div class="display-label">Beden</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.beden1)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Sil" /> |
+        @Html.ActionLink("Listeye Geri Dön", "Index")
+    </p>
+}

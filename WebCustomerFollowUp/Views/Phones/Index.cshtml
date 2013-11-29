@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebCustomerFollowUp.Models.Phones>
+
+@{
+    ViewBag.Title = "Telefon Tanımlama";
+}
+
+<h2>Telefon Tanımlama</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Müşteri
+        </th>
+        <th>
+            Telefon
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Durum
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Ayrıntılar", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

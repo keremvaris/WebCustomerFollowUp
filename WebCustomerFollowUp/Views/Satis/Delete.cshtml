@@ -1,0 +1,58 @@
+﻿@model WebCustomerFollowUp.Models.Satis
+
+@{
+    ViewBag.Title = "Sil";
+}
+
+<h2>Satış Sil</h2>
+
+<h3>Silmek istediğinize Emin misiniz?</h3>
+<fieldset>
+    <legend>Satis Sil</legend>
+
+    <div class="display-label">Müşteri</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Customer.Name)
+    </div>
+
+    <div class="display-label">Birim Fiyat</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.birimfiyat)
+    </div>
+
+    <div class="display-label">Miktar</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.miktar)
+    </div>
+
+    <div class="display-label">Stok</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.stok.StokAdi)
+    </div>
+
+    <div class="display-label">Toplam</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.toplam)
+    </div>
+
+    <div class="display-label">Alınan</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Alınan)
+    </div>
+
+    <div class="display-label">Alacak</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.alacak)
+    </div>
+
+    <div class="display-label">Satış Tarihi</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SatisTarihi)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Sil" /> |
+        @Html.ActionLink("Listeye Geri Dön", "Index")
+    </p>
+}

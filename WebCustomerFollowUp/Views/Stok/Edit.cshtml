@@ -1,0 +1,67 @@
+﻿@model WebCustomerFollowUp.Models.stok
+
+@{
+    ViewBag.Title = "Düzenle";
+}
+
+<h2>Düzenle</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Stok</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.r_id, "Renk")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("r_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.r_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.b_id, "Beden")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("b_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.b_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.u_id, "Urun")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("u_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.u_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.adet)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.adet)
+            @Html.ValidationMessageFor(model => model.adet)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StokAdi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StokAdi)
+            @Html.ValidationMessageFor(model => model.StokAdi)
+        </div>
+
+        <p>
+            <input type="submit" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</div>

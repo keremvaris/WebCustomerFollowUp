@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebCustomerFollowUp.Models.Satis>
+
+@{
+    ViewBag.Title = "Satış Tanımlama";
+}
+
+<h2>Satış Tanımlama</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Müşteri
+        </th>
+        <th>
+            Birim Fiyat
+        </th>
+        <th>
+            Miktar
+        </th>
+        <th>
+            Stok
+        </th>
+        <th>
+            Toplam
+        </th>
+        <th>
+            Alınan
+        </th>
+        <th>
+            Alacak
+        </th>
+        <th>
+            Satış Tarihi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birimfiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.miktar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stok.StokAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.toplam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alınan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.alacak)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SatisTarihi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Ayrıntılar", "Details", new { id=item.id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

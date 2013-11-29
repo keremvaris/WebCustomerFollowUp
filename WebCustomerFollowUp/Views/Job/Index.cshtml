@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebCustomerFollowUp.Models.Job>
+
+@{
+    ViewBag.Title = "İş Tanımlama";
+}
+
+<h2>İş Tanımlama</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Müşteri
+        </th>
+        <th>
+            Web Site
+        </th>
+        <th>
+            İş
+        </th>
+        <th>
+            Notlar
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Ayrıntılar", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
